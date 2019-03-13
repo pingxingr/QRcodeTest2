@@ -3,6 +3,7 @@ package com.example.qrcodetest3;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.hardware.Camera;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
@@ -15,7 +16,10 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.CompoundButton;
+import android.widget.FrameLayout;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.ToggleButton;
 
 import com.google.android.gms.common.annotation.KeepName;
@@ -39,6 +43,8 @@ public final class ScanCode extends AppCompatActivity
     private CameraSource cameraSource = null;
     private CameraSourcePreview preview;
     private GraphicOverlay graphicOverlay;
+    private static TextView textView;
+    private View square;
     private String selectedModel = FACE_CONTOUR;
 
     @Override
@@ -49,6 +55,11 @@ public final class ScanCode extends AppCompatActivity
 
         preview = (CameraSourcePreview) findViewById(R.id.firePreview);
         graphicOverlay = (GraphicOverlay) findViewById(R.id.fireFaceOverlay);
+        textView = (TextView) findViewById(R.id.textView);
+        //overlay = (RelativeLayout) findViewById(R.id.overlay);
+        //square = findViewById(R.id.square);
+        //overlay.setBackgroundColor(Color.parseColor("#cc000000"));
+        //square.setBackgroundColor(Color.parseColor("#00000000"));
 
         if (allPermissionsGranted()) {
             createCameraSource();
@@ -197,6 +208,10 @@ public final class ScanCode extends AppCompatActivity
             return true;
         }
         return false;
+    }
+
+    public static void setTextView(String text) {
+        textView.setText(text);
     }
 }
 

@@ -710,6 +710,10 @@ public class CameraSource {
 
         try {
           synchronized (processorLock) {
+            if(BarcodeScanningProcessor.stringOfQrCode != null) {
+              //stop();
+              return;
+            }
             Log.d(TAG, "Process an image");
             frameProcessor.process(
                 data,

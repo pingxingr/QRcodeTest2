@@ -17,6 +17,8 @@ import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
 
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
@@ -30,14 +32,15 @@ import com.google.firebase.ml.vision.face.FirebaseVisionFaceDetectorOptions;
 import java.io.IOException;
 import java.util.List;
 
-/**
- * Barcode Detector Demo.
- */
 public class BarcodeScanningProcessor extends VisionProcessorBase<List<FirebaseVisionBarcode>> {
 
     private static final String TAG = "BarcodeScanProc";
 
+    public static String stringOfQrCode;
+
     private final FirebaseVisionBarcodeDetector detector;
+
+    public TextView textView;
 
     public BarcodeScanningProcessor() {
         // Note that if you know which format of barcode your app is dealing with, detection will be
@@ -75,7 +78,11 @@ public class BarcodeScanningProcessor extends VisionProcessorBase<List<FirebaseV
         }
         for (int i = 0; i < barcodes.size(); ++i) {
             FirebaseVisionBarcode barcode = barcodes.get(i);
-            Log.i("successjaja",barcodes.get(i).getRawValue());
+            if(barcode != null) {
+                Log.i("successjaja", barcodes.get(i).getRawValue());
+                stringOfQrCode = barcode.getRawValue();
+                ScanCode.setTextView(stringOfQrCode);
+            }
             //BarcodeGraphic barcodeGraphic = new BarcodeGraphic(graphicOverlay, barcode);
             //graphicOverlay.add(barcodeGraphic);
         }
