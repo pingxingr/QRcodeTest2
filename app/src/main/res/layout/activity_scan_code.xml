@@ -30,7 +30,7 @@
         android:layout_height="match_parent"
         android:background="#8c565658">
         <View
-            android:id="@+id/square"
+            android:id="@+id/rectangle"
             android:layout_width="300dp"
             android:layout_height="300dp"
             android:layout_centerVertical="true"

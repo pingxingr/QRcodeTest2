@@ -32,7 +32,7 @@ import java.util.List;
 /** Demo app showing the various features of ML Kit for Firebase. This class is used to
  * set up continuous frame processing on frames from a camera source. */
 @KeepName
-public final class ScanCode extends AppCompatActivity
+public final class ScanCodeActivity extends AppCompatActivity
     implements ActivityCompat.OnRequestPermissionsResultCallback,
     AdapterView.OnItemSelectedListener,
     CompoundButton.OnCheckedChangeListener {
@@ -107,7 +107,7 @@ public final class ScanCode extends AppCompatActivity
         }
 
 
-        cameraSource.setMachineLearningFrameProcessor(new BarcodeScanningProcessor());
+        cameraSource.setMachineLearningFrameProcessor(new BarcodeScanningProcessor(this));
 
     }
 
@@ -213,5 +213,7 @@ public final class ScanCode extends AppCompatActivity
     public static void setTextView(String text) {
         textView.setText(text);
     }
+
+
 }
 
