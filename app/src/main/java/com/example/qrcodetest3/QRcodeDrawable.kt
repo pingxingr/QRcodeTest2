@@ -8,7 +8,7 @@ import android.graphics.PorterDuff
 import android.graphics.PorterDuffXfermode
 import android.graphics.drawable.Drawable
 
-class CustomDrawable(private val innerDrawable: Drawable) : Drawable() {
+class QRcodeDrawable(private val innerDrawable: Drawable) : Drawable() {
     private val srcPaint: Paint
     private var srcPath: Path? = Path()
 
@@ -27,16 +27,11 @@ class CustomDrawable(private val innerDrawable: Drawable) : Drawable() {
         if (srcPath == null || srcPath!!.isEmpty) {
             innerDrawable.draw(canvas)
         } else {
-            val saveCount = canvas.saveLayer(0f, 0f, canvas.width.toFloat(), canvas.height.toFloat(), srcPaint, Canvas.ALL_SAVE_FLAG)
-
+            val saveCount = canvas.saveLayer(0f, 0f, bounds.width().toFloat(), bounds.height().toFloat(), srcPaint, Canvas.ALL_SAVE_FLAG)
             innerDrawable.draw(canvas)
-
             srcPaint.xfermode = PorterDuffXfermode(PorterDuff.Mode.CLEAR)
-
             canvas.drawPath(srcPath!!, srcPaint)
-
             srcPaint.xfermode = null
-
             canvas.restoreToCount(saveCount)
         }
     }

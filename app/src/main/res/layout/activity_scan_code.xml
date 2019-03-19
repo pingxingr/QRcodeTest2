@@ -25,7 +25,7 @@
             android:layout_alignParentBottom="true"/>
     </com.example.qrcodetest3.CameraSourcePreview>
 
-    <com.example.qrcodetest3.OverlayLayout
+    <com.example.qrcodetest3.QRcodeOverlayLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#8c565658">
@@ -44,7 +44,7 @@
             android:textColor="#fcb316"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"/>
-    </com.example.qrcodetest3.OverlayLayout>
+    </com.example.qrcodetest3.QRcodeOverlayLayout>
 
 
 </RelativeLayout>

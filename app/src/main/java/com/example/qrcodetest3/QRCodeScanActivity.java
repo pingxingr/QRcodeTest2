@@ -3,36 +3,24 @@ package com.example.qrcodetest3;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
-import android.hardware.Camera;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.ActivityCompat.OnRequestPermissionsResultCallback;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.ArrayAdapter;
 import android.widget.CompoundButton;
-import android.widget.FrameLayout;
-import android.widget.RelativeLayout;
-import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.ToggleButton;
 
 import com.google.android.gms.common.annotation.KeepName;
-import com.google.firebase.ml.common.FirebaseMLException;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-/** Demo app showing the various features of ML Kit for Firebase. This class is used to
- * set up continuous frame processing on frames from a camera source. */
 @KeepName
-public final class ScanCodeActivity extends AppCompatActivity
+public final class QRCodeScanActivity extends AppCompatActivity
     implements ActivityCompat.OnRequestPermissionsResultCallback,
     AdapterView.OnItemSelectedListener,
     CompoundButton.OnCheckedChangeListener {
@@ -107,7 +95,7 @@ public final class ScanCodeActivity extends AppCompatActivity
         }
 
 
-        cameraSource.setMachineLearningFrameProcessor(new BarcodeScanningProcessor(this));
+        cameraSource.setMachineLearningFrameProcessor(new QRcodeScanningProcessor(this));
 
     }
 

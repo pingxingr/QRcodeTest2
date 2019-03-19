@@ -52,7 +52,7 @@ public class CameraSource {
     @SuppressLint("InlinedApi")
     public static final int CAMERA_FACING_FRONT = CameraInfo.CAMERA_FACING_FRONT;
 
-    private static final String TAG = "MIDemoApp:CameraSource";
+    private static final String TAG = "CameraSource";
 
     /**
      * The dummy surface texture must be assigned a chosen name. Since we never use an OpenGL context,
@@ -123,6 +123,7 @@ public class CameraSource {
      * identity ('==') check on the keys.
      */
     private final Map<byte[], ByteBuffer> bytesToByteBuffer = new IdentityHashMap<>();
+
 
     public CameraSource(Activity activity, GraphicOverlay overlay) {
         this.activity = activity;
@@ -718,7 +719,7 @@ public class CameraSource {
                 // the camera to add pending frame(s) while we are running detection on the current
                 // frame.
 
-                try {Log.i("hahahahahah","gahahaahah");
+                try {
                     synchronized (processorLock) {
                         Log.d(TAG, "Process an image");
                         frameProcessor.process(

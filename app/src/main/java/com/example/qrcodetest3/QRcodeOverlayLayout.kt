@@ -6,10 +6,10 @@ import android.util.AttributeSet
 import android.view.View
 import android.widget.RelativeLayout
 
-class OverlayLayout : RelativeLayout {
+class QRcodeOverlayLayout : RelativeLayout {
 
     private val mContext: Context? = null
-    private var background: CustomDrawable? = null
+    private var background: QRcodeDrawable? = null
 
     constructor(context: Context) : super(context) {
         initView(context, null)
@@ -21,7 +21,7 @@ class OverlayLayout : RelativeLayout {
 
 
     private fun initView(context: Context, attrs: AttributeSet?) {
-        background = CustomDrawable(getBackground())
+        background = QRcodeDrawable(getBackground())
         setBackground(background)
     }
 

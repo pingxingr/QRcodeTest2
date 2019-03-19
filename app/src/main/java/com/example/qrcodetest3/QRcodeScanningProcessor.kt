@@ -13,9 +13,13 @@ import com.google.firebase.ml.vision.common.FirebaseVisionImage
 import java.io.IOException
 
 
-class BarcodeScanningProcessor(context: Context) : VisionProcessorBase<List<FirebaseVisionBarcode>>() {
+class QRcodeScanningProcessor(context: Context) : VisionProcessorBase<List<FirebaseVisionBarcode>>() {
 
     var context: Context
+
+    companion object {
+        private const val TAG = "QRcodeScanProcessor"
+    }
 
     init {
         this.context = context
@@ -55,18 +59,13 @@ class BarcodeScanningProcessor(context: Context) : VisionProcessorBase<List<Fire
 
         barcodes.forEach {
             val barcode: FirebaseVisionBarcode = it;
-            ScanCodeActivity.setTextView(barcode.rawValue)
+            QRCodeScanActivity.setTextView(barcode.rawValue)
             (context as Activity).finish()
         }
         graphicOverlay.postInvalidate()
     }
 
     override fun onFailure(e: Exception) {
-        Log.e(TAG, "Barcode detection failed $e")
-    }
-
-    companion object {
-
-        private const val TAG = "BarcodeScanProc"
+        Log.e(TAG, "QRcode detection failed $e")
     }
 }

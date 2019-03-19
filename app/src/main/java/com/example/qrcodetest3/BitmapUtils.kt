@@ -35,7 +35,7 @@ object BitmapUtils {
                 return rotateBitmap(bmp, metadata.rotation, metadata.cameraFacing)
             }
         } catch (e: Exception) {
-            Log.e("VisionProcessorBase", "Error: " + e.message)
+            Log.e("BitmapUtils", "Error: " + e.message)
         }
 
         return null
@@ -53,7 +53,6 @@ object BitmapUtils {
             }
         }
 
-        // Rotate the image back to straight.}
         matrix.postRotate(rotationDegree.toFloat())
         if (facing == CameraInfo.CAMERA_FACING_BACK) {
             return Bitmap.createBitmap(bitmap, 0, 0, bitmap.width, bitmap.height, matrix, true)
